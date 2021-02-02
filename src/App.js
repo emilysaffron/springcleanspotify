@@ -1,13 +1,18 @@
-import icon from "./icon.png";
+import FetchRoutes from "./Helpers/FetchRoutes";
+import { Global, css } from "@emotion/react";
+
 function App() {
-  const clicked = () => {
-    window.location.href =
-      "https://accounts.spotify.com/authorize?client_id=2ff6acb69e284959a01b41cab45891a6&redirect_uri=http://localhost:3000/&response_type=token";
-  };
   return (
-    <div>
-      <img onClick={() => clicked()} src={icon} alt="icon" />
-    </div>
+    <>
+      <Global
+        styles={css`
+          * {
+            background-color: #191414;
+          }
+        `}
+      />
+      {FetchRoutes()}
+    </>
   );
 }
 

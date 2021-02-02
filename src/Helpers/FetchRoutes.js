@@ -1,14 +1,10 @@
 import { Router } from "@reach/router";
-
+import LandingPage from "../Pages/LandingPage";
 const FetchRoutes = () => {
   return (
-    <Router
-      exact
-      path="/"
-      render={() =>
-        (window.location = "https://accounts.spotify.com/authorize")
-      }
-    />
+    <Router>
+      <LandingPage path={"/"} />
+    </Router>
   );
 };
 export default FetchRoutes;
