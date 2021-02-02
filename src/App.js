@@ -2,8 +2,10 @@ import FetchRoutes from "./Helpers/FetchRoutes";
 import { Global, css } from "@emotion/react";
 
 function App() {
+  
   return (
     <>
+    
       <Global
         styles={css`
           * {

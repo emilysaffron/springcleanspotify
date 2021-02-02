@@ -1,7 +1,7 @@
 import icon from "../icon.png";
 import styled from "@emotion/styled";
 import AuthUrl from "../Helpers/AuthUrl";
-import GetData from "../Helpers/GetData";
+import GetUserId from "../Helpers/GetUserId";
 
 const StyledPage = styled.div`
   display: flex;
@@ -11,7 +11,11 @@ const StyledPage = styled.div`
 const Icon = styled.img`
   cursor: pointer;
 `;
+const Name = styled.div`
+  color: white;
+`;
 const LandingPage = () => {
+  let userId = "";
   const clicked = () => {
     window.location.href = AuthUrl();
   };
@@ -21,12 +25,13 @@ const LandingPage = () => {
     const urlParams = new URLSearchParams(url);
     let accessToken = urlParams.get("#access_token");
     if (accessToken) {
-      GetData(accessToken);
+      userId = GetUserId(accessToken);
     }
   }
   return (
     <StyledPage>
       <Icon onClick={() => clicked()} src={icon} alt="icon" />
+      <Name>{userId}</Name>
     </StyledPage>
   );
 };
