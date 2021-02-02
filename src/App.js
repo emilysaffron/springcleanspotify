@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-
+import icon from "./icon.png";
 function App() {
+  const clicked = () => {
+    window.location.href =
+      "https://accounts.spotify.com/authorize?client_id=2ff6acb69e284959a01b41cab45891a6&redirect_uri=http://localhost:3000/&response_type=token";
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <img onClick={() => clicked()} src={icon} alt="icon" />
     </div>
   );
 }
