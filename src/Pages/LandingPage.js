@@ -2,12 +2,13 @@ import icon from "../icon.png";
 import styled from "@emotion/styled";
 import AuthUrl from "../Helpers/AuthUrl";
 import GetUserId from "../Helpers/GetUserId";
+import GetSavedTracks from "../Helpers/GetSavedTracks";
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
+
 const typing = keyframes`
   from {width: 0}
 `;
-
 const StyledPage = styled.div`
   display: flex;
   justify-content: center;
@@ -41,21 +42,30 @@ const LandingPage = () => {
   const clicked = () => {
     window.location.href = AuthUrl();
   };
+
   let url = window.location.hash;
 
+  let accessToken = "";
+  let tracks = "";
   if (url.length > 0) {
     const urlParams = new URLSearchParams(url);
-    let accessToken = urlParams.get("#access_token");
+    accessToken = urlParams.get("#access_token");
     if (accessToken) {
       userId = GetUserId(accessToken, updateFoundUsername);
     }
+    if (!tracks) {
+      tracks = GetSavedTracks(accessToken, userId);
+    }
   }
+
   return (
     <StyledPage>
       <Icon onClick={() => clicked()} src={icon} alt="icon" />
       <h1>Hello</h1>
       {foundUsername ? (
-        <Name>{userId}</Name>
+        <>
+          <Name>{userId}</Name>
+        </>
       ) : (
         <h2>click the icon to log in</h2>
       )}

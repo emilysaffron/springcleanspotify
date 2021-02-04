@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-const GetUserId = (accessToken, updateFoundUsername) => {
+
+const GetSavedTracks = (accessToken, userId) => {
   const [data, updateData] = useState("");
 
   useEffect(() => {
-    async function getId() {
-      const url = "https://api.spotify.com/v1/me";
+    async function getTracks() {
+      console.log(userId);
+      const url = `https://api.spotify.com/v1/users/${userId}/tracks?offset=3000&limit=50`;
+      console.log(url);
       const options = {
         headers: {
           Authorization: "Bearer " + accessToken,
@@ -12,13 +15,14 @@ const GetUserId = (accessToken, updateFoundUsername) => {
       };
       const response = await fetch(url, options);
       updateData(await response.json());
-      updateFoundUsername(true);
+
+      console.log(data.total);
     }
 
-    getId();
+    getTracks();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return data.id;
+  });
+  return data.total;
 };
-export default GetUserId;
+export default GetSavedTracks;
