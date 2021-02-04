@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const GetUserId = (accessToken) => {
+const GetUserId = (accessToken, updateFoundUsername) => {
   const [data, updateData] = useState("");
   useEffect(() => {
     async function getId() {
@@ -12,10 +12,12 @@ const GetUserId = (accessToken) => {
       };
       const response = await fetch(url, options);
       updateData(await response.json());
+      updateFoundUsername(true);
     }
     getId();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken]);
-
+  console.log(data);
   return data.id;
 };
 export default GetUserId;
