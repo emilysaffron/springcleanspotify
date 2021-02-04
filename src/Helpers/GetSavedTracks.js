@@ -15,14 +15,12 @@ const GetSavedTracks = (accessToken, userId) => {
       };
       const response = await fetch(url, options);
       updateData(await response.json());
-
-      console.log(data.total);
     }
 
     getTracks();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  });
+  }, []);
   return data.total;
 };
 export default GetSavedTracks;
