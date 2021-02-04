@@ -38,7 +38,6 @@ const Name = styled.span`
 
 const LandingPage = () => {
   const [foundUsername, updateFoundUsername] = useState(false);
-  const [NumberOfSavedTracks, foundNumberOfSavedTracks] = useState("");
   let userId = "";
   const clicked = () => {
     window.location.href = AuthUrl();
