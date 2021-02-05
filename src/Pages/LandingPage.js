@@ -33,7 +33,7 @@ const Name = styled.span`
   overflow: hidden;
   display: inline-block;
   text-align: center;
-  animation: ${typing} 2s steps(21, end);
+  animation: ${typing} 3s steps(21, end);
 `;
 
 const LandingPage = () => {
@@ -65,7 +65,7 @@ const LandingPage = () => {
       {foundUsername ? (
         <>
           <Name>{userId}</Name>
-          you have {tracks} tracks saved!
+          {tracks ? <>you have {tracks} tracks saved!</> : null}
         </>
       ) : (
         <h2>click the icon to log in</h2>
