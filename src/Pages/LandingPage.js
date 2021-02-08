@@ -10,18 +10,16 @@ const typing = keyframes`
   from {width: 0}
 `;
 const StyledPage = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 100px;
   color: #1db954;
   font: bold 100% Consolas, Monaco, monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 const Icon = styled.img`
   cursor: pointer;
-  width: 200px;
-  height: 200px;
+  height: auto;
 `;
 
 const Name = styled.span`
@@ -37,7 +35,6 @@ const Name = styled.span`
 `;
 
 const LandingPage = () => {
- 
   const [foundUsername, updateFoundUsername] = useState(false);
   let userId = "";
   let accessToken = "";
@@ -62,9 +59,10 @@ const LandingPage = () => {
   return (
     <StyledPage>
       <Icon onClick={() => clicked()} src={icon} alt="icon" />
-      <h1>Hello</h1>
       {foundUsername ? (
         <>
+          <h1>Hello</h1>
+
           <Name>{userId}</Name>
           {tracks ? <>you have {tracks} tracks saved!</> : null}
         </>
