@@ -37,16 +37,17 @@ const Name = styled.span`
 `;
 
 const LandingPage = () => {
+ 
   const [foundUsername, updateFoundUsername] = useState(false);
   let userId = "";
+  let accessToken = "";
+  let tracks = "";
+  let url = window.location.hash;
+
   const clicked = () => {
     window.location.href = AuthUrl();
   };
 
-  let url = window.location.hash;
-
-  let accessToken = "";
-  let tracks = "";
   if (url.length > 0) {
     const urlParams = new URLSearchParams(url);
     accessToken = urlParams.get("#access_token");
